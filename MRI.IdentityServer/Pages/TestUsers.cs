@@ -21,12 +21,13 @@ public class TestUsers
                 new TestUser
                 {
                     SubjectId = "d860efca-22d9-47fd-8249-791ba61b07c7",
-                    Username = "Tom",
+                    Username = "tom",
                     Password = "password",
 
                     Claims = new List<Claim>
                     {
                         new Claim("role","FreeUser"),
+                         new Claim("country","canada"),
                         new Claim(JwtClaimTypes.GivenName, "Tom"),
                         new Claim(JwtClaimTypes.FamilyName, "Hanks"),
                       
@@ -35,11 +36,12 @@ public class TestUsers
                 new TestUser
                 {
                     SubjectId = "b7539694-97e7-4dfe-84da-b4256e1ff5c7",
-                    Username = "Emma",
+                    Username = "emma",
                     Password = "password",
 
                     Claims = new List<Claim>
                     {
+                          new Claim("country","USA"),
                           new Claim("role","PayingUser"),
                          new Claim(JwtClaimTypes.GivenName, "Emma"),
                         new Claim(JwtClaimTypes.FamilyName, "Flagg"),

@@ -45,15 +45,22 @@ namespace MRI.ImageGallery.Client.Controllers
                 return View(new GalleryIndexViewModel(images ?? new List<ImageVm>()));
             }
         }
+        //role based authorization
         // only user with paying role can add an image
-        [Authorize(Roles ="PayingUser")]
+        //[Authorize(Roles ="PayingUser")]
+        //policy based authorization
+        [Authorize(Policy = "UserCanAddImage")]
         public IActionResult AddImage()
         {
             return View();
         }
 
         [HttpPost]
-        [Authorize(Roles = "PayingUser")]
+        //role based authorization
+        // only user with paying role can add an image
+        //[Authorize(Roles = "PayingUser")]
+        //policy based authorization
+        [Authorize(Policy = "UserCanAddImage")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddImage(AddImageViewModel addImageViewModel)
         {
@@ -111,6 +118,10 @@ namespace MRI.ImageGallery.Client.Controllers
             var accessToken = await HttpContext
                 .GetTokenAsync(OpenIdConnectParameterNames.AccessToken);
 
+            // get the refreshed  token
+            var refreshToken = await HttpContext
+                .GetTokenAsync(OpenIdConnectParameterNames.RefreshToken);
+
             var userClaimsStringBuilder = new StringBuilder();
             foreach (var claim in User.Claims)
             {
@@ -125,6 +136,10 @@ namespace MRI.ImageGallery.Client.Controllers
             // log token & claims
             _logger.LogInformation($"Access token & user claims: " +
                 $"\n{accessToken} \n{userClaimsStringBuilder}");
+
+                 // log token & claims
+            _logger.LogInformation($"refresh Access token & user claims: " +
+                $"\n{refreshToken} \n{userClaimsStringBuilder}");
         }
 
         //public async Task<IActionResult> EditImage(Guid id)

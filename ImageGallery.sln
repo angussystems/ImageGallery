@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MRI.ImageGallery.Models", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MRI.IdentityServer", "MRI.IdentityServer\MRI.IdentityServer.csproj", "{4A2BEBC9-2DA9-4C72-BA92-21830F19E0FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MRI.ImageGallery.Client", "MRI.ImageGallery.Client\MRI.ImageGallery.Client.csproj", "{674A1612-7603-4B0F-ACD2-C77FAC5492D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MRI.ImageGallery.Client", "MRI.ImageGallery.Client\MRI.ImageGallery.Client.csproj", "{674A1612-7603-4B0F-ACD2-C77FAC5492D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageGallery.Authorization", "ImageGallery.Authorization\ImageGallery.Authorization.csproj", "{D74EC8F9-4BE8-4434-8B10-202053A4BE42}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{674A1612-7603-4B0F-ACD2-C77FAC5492D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{674A1612-7603-4B0F-ACD2-C77FAC5492D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{674A1612-7603-4B0F-ACD2-C77FAC5492D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D74EC8F9-4BE8-4434-8B10-202053A4BE42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D74EC8F9-4BE8-4434-8B10-202053A4BE42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D74EC8F9-4BE8-4434-8B10-202053A4BE42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D74EC8F9-4BE8-4434-8B10-202053A4BE42}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

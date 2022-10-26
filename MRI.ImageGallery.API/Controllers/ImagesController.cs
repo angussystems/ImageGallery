@@ -40,7 +40,11 @@ namespace MRI.ImageGallery.API.Controllers
 
         }
         [HttpPost()]
-        [Authorize(Roles = "PayingUser")]
+        //role based authorization
+        // only user with paying role can add an image
+        //[Authorize(Roles ="PayingUser")]
+        //policy based authorization
+        [Authorize(Policy = "UserCanAddImage")]
         public async Task<ActionResult<ImageVm>> CreateImage([FromBody] AddImageDto addImageDto)
         {
           

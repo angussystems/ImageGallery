@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ImageGallery.Authorization\ImageGallery.Authorization.csproj" />
     <ProjectReference Include="..\MRI.ImageGallery.Models\MRI.ImageGallery.Models.csproj" />
   </ItemGroup>
 

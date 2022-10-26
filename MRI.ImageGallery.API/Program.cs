@@ -1,4 +1,5 @@
 using ImageGallery.API.Services;
+using ImageGallery.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -26,7 +27,7 @@ builder.Services.AddSwaggerGen();
 // clear default claims from access token
 JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
-//Secure API so that they acquire breaer token
+//Secure API so that they required breaer token
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -43,6 +44,13 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             
         };
     });
+
+//policy based authrozation
+builder.Services.AddAuthorization(authorizationOptions =>
+{
+    authorizationOptions.AddPolicy("UserCanAddImage",
+        AuthorizationPolicies.CanAddImage());
+});
 
 var app = builder.Build();
 

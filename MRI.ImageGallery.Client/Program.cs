@@ -1,4 +1,5 @@
 using IdentityModel.Client;
+using ImageGallery.Authorization;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
@@ -59,8 +60,14 @@ options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
     //get roles base scopes from IDP
     options.Scope.Add("roles");
     options.Scope.Add("imagegalleryapi.fullaccess");
-    //becasue we defined role a custom claim so we need to map that
+    //becasue we defined role a custom claim so we need to map that 
     options.ClaimActions.MapJsonKey("role", "role");
+    //Attribute based authrization
+    options.Scope.Add("country");
+    //for offline_access
+    //options.Scope.Add("offline_access");
+    //add country scope to show in claim identity
+    options.ClaimActions.MapUniqueJsonKey("country", "country");
     //tells the framwork where to find role claim
     options.TokenValidationParameters = new()
     {
@@ -69,7 +76,11 @@ options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
     };
 
 });
-
+builder.Services.AddAuthorization(authorizationOptions =>
+{
+    authorizationOptions.AddPolicy("UserCanAddImage",
+        AuthorizationPolicies.CanAddImage());
+});
 
 var app = builder.Build();
 

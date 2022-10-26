@@ -10,17 +10,19 @@ public static class Config
         {
             new IdentityResources.OpenId(),
             new IdentityResources.Profile(),
-            //configure role base
+            //for role bases Authorization
             new IdentityResource("roles",
                 "Your role(s)",
-                new []{ "role"})
+                new []{ "role"}),
+            //for attribute based Authorization
+            new IdentityResource("country","The country you are living in",new List<string>(){ "country"})
            
         };
 
     public static IEnumerable<ApiResource> ApiResources =>
         new ApiResource[]
         {
-            new ApiResource("imagegalleryapi", "Image Gallery API",new []{ "role"})
+            new ApiResource("imagegalleryapi", "Image Gallery API",new []{ "role","country"})
             {
                 Scopes={ "imagegalleryapi.fullaccess" }
             }
@@ -40,6 +42,11 @@ public static class Config
                 ClientName = "Image Gallery",
                 ClientId="imagegalleryclient",
                 AllowedGrantTypes = GrantTypes.Code,
+                //refresh token when user is not login to IDP
+               // AllowOfflineAccess=true,
+                //set identity and access token expiration
+                //AccessTokenLifetime
+                //IdentityTokenLifetime
                 RedirectUris=
                 {
                     "https://localhost:7000/signin-oidc"
@@ -53,7 +60,8 @@ public static class Config
                     IdentityServerConstants.StandardScopes.OpenId,
                     IdentityServerConstants.StandardScopes.Profile,
                     "roles",
-                    "imagegalleryapi.fullaccess"
+                    "imagegalleryapi.fullaccess",
+                    "country"
                 },
                 ClientSecrets=
                 {

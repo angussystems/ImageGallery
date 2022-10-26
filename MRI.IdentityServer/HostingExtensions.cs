@@ -1,3 +1,6 @@
+using Marvin.IDP.DbContexts;
+using Marvin.IDP.Services;
+using Microsoft.EntityFrameworkCore;
 using Serilog;
 
 namespace MRI.IdentityServer;
@@ -7,6 +10,13 @@ internal static class HostingExtensions
     public static WebApplication ConfigureServices(this WebApplicationBuilder builder)
     {
         builder.Services.AddRazorPages();
+        builder.Services.AddScoped<ILocalUserService, LocalUserService>();  
+
+        builder.Services.AddDbContext<IdentityDbContext>(options => {
+            options.UseSqlServer(builder.Configuration.GetConnectionString
+                ("IdentityServerConnectionString"));
+        
+        });
 
         builder.Services.AddIdentityServer(options =>
             {
@@ -16,8 +26,8 @@ internal static class HostingExtensions
             .AddInMemoryIdentityResources(Config.IdentityResources)
             .AddInMemoryApiScopes(Config.ApiScopes)
             .AddInMemoryClients(Config.Clients)
-            .AddInMemoryApiResources(Config.ApiResources)
-            .AddTestUsers(TestUsers.Users);
+            .AddInMemoryApiResources(Config.ApiResources);
+            //.AddTestUsers(TestUsers.Users);
 
         return builder.Build();
     }
