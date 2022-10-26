@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32825.248
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MRI.ImageGallery.API", "MRI.ImageGallery.API\MRI.ImageGallery.API.csproj", "{0BC32E9E-1B25-4B90-8B0E-57B6077DFC98}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MRI.ImageGallery.Models", "MRI.ImageGallery.Models\MRI.ImageGallery.Models.csproj", "{E8772B6E-A1AE-434A-8960-EEEA2B99EAD2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MRI.IdentityServer", "MRI.IdentityServer\MRI.IdentityServer.csproj", "{4A2BEBC9-2DA9-4C72-BA92-21830F19E0FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MRI.ImageGallery.Client", "MRI.ImageGallery.Client\MRI.ImageGallery.Client.csproj", "{674A1612-7603-4B0F-ACD2-C77FAC5492D0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0BC32E9E-1B25-4B90-8B0E-57B6077DFC98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BC32E9E-1B25-4B90-8B0E-57B6077DFC98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BC32E9E-1B25-4B90-8B0E-57B6077DFC98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BC32E9E-1B25-4B90-8B0E-57B6077DFC98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8772B6E-A1AE-434A-8960-EEEA2B99EAD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8772B6E-A1AE-434A-8960-EEEA2B99EAD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8772B6E-A1AE-434A-8960-EEEA2B99EAD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8772B6E-A1AE-434A-8960-EEEA2B99EAD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A2BEBC9-2DA9-4C72-BA92-21830F19E0FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A2BEBC9-2DA9-4C72-BA92-21830F19E0FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A2BEBC9-2DA9-4C72-BA92-21830F19E0FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A2BEBC9-2DA9-4C72-BA92-21830F19E0FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{674A1612-7603-4B0F-ACD2-C77FAC5492D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{674A1612-7603-4B0F-ACD2-C77FAC5492D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{674A1612-7603-4B0F-ACD2-C77FAC5492D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{674A1612-7603-4B0F-ACD2-C77FAC5492D0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E175C547-208A-4094-8F8E-A54F30DD4826}
+	EndGlobalSection
+EndGlobal
