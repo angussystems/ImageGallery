@@ -1,4 +1,4 @@
-﻿namespace Marvin.IDP.Entities
+﻿namespace MRI.IdentityServer.Entities
 {
     public interface IConcurrencyAware
     {

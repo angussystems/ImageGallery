@@ -1,7 +1,7 @@
-﻿using Marvin.IDP.Entities;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using MRI.IdentityServer.Entities;
 
-namespace Marvin.IDP.DbContexts
+namespace MRI.IdentityServer.DbContexts
 {
     public class IdentityDbContext : DbContext
     {

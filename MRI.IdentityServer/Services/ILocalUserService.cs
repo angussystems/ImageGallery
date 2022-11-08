@@ -1,6 +1,7 @@
-﻿using Marvin.IDP.Entities;
+﻿
+using MRI.IdentityServer.Entities;
 
-namespace Marvin.IDP.Services
+namespace MRI.IdentityServer.Services
 {
     public interface ILocalUserService
     {

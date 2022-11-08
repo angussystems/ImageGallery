@@ -9,6 +9,7 @@ using MRI.ImageGallery.Models.ViewModel;
 namespace MRI.ImageGallery.API.Controllers
 {
     [Route("api/images")]
+    [ApiController]
     [Authorize]
     public class ImagesController : ControllerBase
     {

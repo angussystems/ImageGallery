@@ -1,7 +1,8 @@
-using Marvin.IDP.DbContexts;
-using Marvin.IDP.Services;
 using Microsoft.EntityFrameworkCore;
+using MRI.IdentityServer.DbContexts;
+using MRI.IdentityServer.Services;
 using Serilog;
+using System.Reflection;
 
 namespace MRI.IdentityServer;
 
@@ -17,18 +18,38 @@ internal static class HostingExtensions
                 ("IdentityServerConnectionString"));
         
         });
+        var migrationsAssembly = typeof(Program).GetTypeInfo()
+            .Assembly.GetName().Name;
+
 
         builder.Services.AddIdentityServer(options =>
             {
                 // https://docs.duendesoftware.com/identityserver/v6/fundamentals/resources/api_scopes#authorization-based-on-scopes
                 options.EmitStaticAudienceClaim = true;
-            })
-            .AddInMemoryIdentityResources(Config.IdentityResources)
-            .AddInMemoryApiScopes(Config.ApiScopes)
-            .AddInMemoryClients(Config.Clients)
-            .AddInMemoryApiResources(Config.ApiResources);
-            //.AddTestUsers(TestUsers.Users);
-
+            }).AddProfileService<LocalUserProfileService>()
+             //.AddInMemoryIdentityResources(Config.IdentityResources)
+             //.AddInMemoryApiScopes(Config.ApiScopes)
+             //.AddInMemoryClients(Config.Clients)
+             //.AddInMemoryApiResources(Config.ApiResources)
+             //.AddTestUsers(TestUsers.Users);
+             .AddConfigurationStore(options =>
+              {
+                  options.ConfigureDbContext = optionsBuilder =>
+                  optionsBuilder.UseSqlServer(
+                      builder.Configuration
+                      .GetConnectionString("IdentityServerConnectionString"),
+                              sqlOptions => sqlOptions
+                              .MigrationsAssembly(migrationsAssembly));
+              }).AddConfigurationStoreCache()
+            .AddOperationalStore(options =>
+            {
+                options.ConfigureDbContext = optionsBuilder =>
+                   optionsBuilder.UseSqlServer(builder.Configuration
+                   .GetConnectionString("IdentityServerConnectionString"),
+                         sqlOptions => sqlOptions
+                         .MigrationsAssembly(migrationsAssembly));
+                options.EnableTokenCleanup = true;
+            });
         return builder.Build();
     }
     

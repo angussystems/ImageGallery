@@ -19,9 +19,14 @@ try
     var app = builder
         .ConfigureServices()
         .ConfigurePipeline();
-    
+
+    // seed the configuration database
+    SeedData.EnsureSeedData(app);
+
+
     app.Run();
 }
+// https://github.com/dotnet/runtime/issues/60600
 catch (Exception ex) when (ex.GetType().Name is not "StopTheHostException")
 {
     Log.Fatal(ex, "Unhandled exception");
